@@ -1,0 +1,29 @@
+%Warning-WIDTHTRUNC: /home/admin/Documents/Projekty/Hobby/Nauka/RISC-5/.v/DDCA/code/exercises/ALU/systemIverilog/alu.sv:5:32: Input port connection 'cin' expects 1 bits on the pin connection, but pin connection's VARREF 'statusIn' generates 3 bits.
+                                                                                                                            : ... note: In instance 'ALU'
+    5 |  adderCLA_32bit fullAdder (A,B,statusIn,resultSum, flagSum);
+      |                                ^~~~~~~~
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.044
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: /home/admin/Documents/Projekty/Hobby/Nauka/RISC-5/.v/DDCA/code/exercises/ALU/systemIverilog/alu.sv:6:28: Input port connection 'cin' expects 1 bits on the pin connection, but pin connection's VARREF 'statusIn' generates 3 bits.
+                                                                                                                            : ... note: In instance 'ALU'
+    6 |  subBLA_32bit fullSub (A,B,statusIn,resultSub, flagSub); 
+      |                            ^~~~~~~~
+%Warning-WIDTHEXPAND: /home/admin/Documents/Projekty/Hobby/Nauka/RISC-5/.v/DDCA/code/exercises/ALU/systemIverilog/alu.sv:9:2: Operator CASE expects 4 bits on the Case expression, but Case expression's VARREF 'opCode' generates 3 bits.
+                                                                                                                            : ... note: In instance 'ALU'
+    9 |  case(opCode)
+      |  ^~~~
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.044
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: /home/admin/Documents/Projekty/Hobby/Nauka/RISC-5/.v/DDCA/code/exercises/ALU/systemIverilog/alu.sv:1:64: Bits of signal are not used: 'statusIn'[2:1]
+                                                                                                                              : ... note: In instance 'ALU'
+    1 | module ALU (input logic [31:0] A, B, input logic [2:0] opCode, statusIn , output logic [31:0] y, output logic statusOut);
+      |                                                                ^~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.044
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: /home/admin/Documents/Projekty/Hobby/Nauka/RISC-5/.v/DDCA/code/exercises/ALU/systemIverilog/fullAdder.sv:2:20: Bits of signal are not used: 'C'[3]
+                                                                                                                                    : ... note: In instance 'ALU.fullAdder.CLA31_16.CLA15_12'
+    2 |  logic [3:0] P, G, C;
+      |                    ^
+- V e r i l a t i o n   R e p o r t: Verilator 5.044 2026-01-01 rev v5.040
+- Verilator: Built from 0.884 MB sources in 454 modules, into 0.116 MB in 3 C++ files needing 0.000 MB
+- Verilator: Walltime 0.107 s (elab=0.021, cvt=0.052, bld=0.000); cpu 0.106 s on 1 threads; alloced 28.387 MB
