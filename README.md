@@ -10,4 +10,6 @@ During the development of this project, Large Language Models (LLMs) were utiliz
 * Understand the OpenLane RTL-to-GDSII flow and physics-based limits (like Gate-Level Simulation).
 * Format and translate documentation (including this README).
 
+I used it just like any other source of knowledge which I was using (e.g.: Books, Documentations, Youtube videos).
+
 **Absolutely no "vibe coding" or automated code generation was used for the core logic.** Every single line of SystemVerilog/Verilog RTL and every Python/cocotb testbench was typed, debugged, and fully understood by me manually.
