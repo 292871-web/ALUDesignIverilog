@@ -1,20 +1,17 @@
 module adderCLA_4bit(input logic [3:0] A,B, input logic cin, output logic [3:0] S, output logic Gg, Pg);
 	logic [3:0] P, G, C;
-	always_comb
-		begin
-		P = A ^ B;
-		G = A & B;
+	assign	P = A ^ B;
+	assign	G = A & B;
 		
-		C[0] = G[0] | (cin & P[0]);
-		C[1] = G[1] | (G[0] & P[1]) | (cin & P[1] & P[0]);
-		C[2] = G[2] | (G[1] & P[2]) | (G[0] & P[1] & P[2]) | (cin & P[0] & P[1] & P[2]);
-		C[3] = G[3] | (G[2] & P[3]) | (G[1] & P[2] & P[3]) | (G[0] & P[1] & P[2] & P[3]) | (cin & P[0] & P[1] & P[2] & P[3]);
+	assign	C[0] = G[0] | (cin & P[0]);
+	assign	C[1] = G[1] | (G[0] & P[1]) | (cin & P[1] & P[0]);
+	assign	C[2] = G[2] | (G[1] & P[2]) | (G[0] & P[1] & P[2]) | (cin & P[0] & P[1] & P[2]);
+	assign	C[3] = G[3] | (G[2] & P[3]) | (G[1] & P[2] & P[3]) | (G[0] & P[1] & P[2] & P[3]) | (cin & P[0] & P[1] & P[2] & P[3]);
 		
-		S = P ^ {C[2:0], cin};
+	assign	S = P ^ {C[2:0], cin};
 		
-		Pg = P[0] & P[1] & P[2] & P[3];
-		Gg = G[3] | (G[2] & P[3]) | (G[1] & P[3] & P[2]) | (G[0] & P[1] & P[2] & P[3]);
-		end
+	assign	Pg = P[0] & P[1] & P[2] & P[3];
+	assign	Gg = G[3] | (G[2] & P[3]) | (G[1] & P[3] & P[2]) | (G[0] & P[1] & P[2] & P[3]);
 endmodule
 
 module adderCLA_16bit(input logic [15:0] A,B, input logic cin, output logic [15:0] S, output logic GgH, PgH);
@@ -44,4 +41,17 @@ module adderCLA_32bit(input logic [31:0] A,B, input logic cin, output logic [31:
 	
 	assign overflow = GgH[1] | (GgH[0] & PgH[1]) | (PgH[0] & PgH[1] & C[0]);
 	
+
+endmodule
+
+module addsub32(input logic [31:0] A,B,
+		input logic sub,
+		output logic [31:0] S,
+		output logic carryOut);
+		logic [31:0] bIn;
+		
+		assign bIn = B ^ {32{sub}};
+		
+		adderCLA_32bit addsub(A, bIn, sub, S, carryOut);
+		
 endmodule
