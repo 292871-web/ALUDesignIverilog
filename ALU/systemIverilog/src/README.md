@@ -1,5 +1,3 @@
----
-
 ## 📖 DevLog / Learning Journey
 
 ### [2026-09-28] - Mastering cocotb & Rethinking Architecture
