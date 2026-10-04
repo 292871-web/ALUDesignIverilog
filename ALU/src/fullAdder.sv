@@ -47,11 +47,13 @@ endmodule
 module addsub32(input logic [31:0] A,B,
 		input logic sub,
 		output logic [31:0] S,
-		output logic carryOut);
+		output logic carryOut, output logic overflow);
 		logic [31:0] bIn;
 		
 		assign bIn = B ^ {32{sub}};
 		
 		adderCLA_32bit addsub(A, bIn, sub, S, carryOut);
+		
+		assign overflow = ((A[31] ^ B[31]) & (S[31] ^ A[31]) & sub);
 			
 endmodule
